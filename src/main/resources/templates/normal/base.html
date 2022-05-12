@@ -52,8 +52,8 @@
       <a href="#" th:href="@{/user/index}" class="items"><i class="fa-solid fa-house"></i> Home</a>
       <a href="#" class="items" th:href="@{/user/show-contact/0}"><i class="fa-solid fa-address-book"></i> View Contact</a>
       <a href="#" th:href="@{/user/add-contact}" class="items"><i class="fa-solid fa-folder-plus"></i> Add Contact</a>
-      <a href="#" class="items"><i class="fa-solid fa-user"></i> Your Profile</a>
-      <a href="#" class="items"><i class="fa-solid fa-gear"></i> Setting</a>
+      <a href="#" th:href="@{/user/profile}" class="items"><i class="fa-solid fa-user"></i> Your Profile</a>
+      <a href="#" class="items"><i class="fa-solid fa-at"></i>Send Email</a>
       <a href="#" th:href="@{/logout}" class="items"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
       <div class="divider"></div>
     </div>
@@ -76,6 +76,27 @@
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script th:src="@{/js/script.js}"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    function deletecontact(cid){
+      swal({
+        title: "Are you sure?",
+        text: "You want to delete this contact",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+         window.location="/user/delete_contact/"+cid;
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
+    }
+</script>
 
 </body>
 </html>

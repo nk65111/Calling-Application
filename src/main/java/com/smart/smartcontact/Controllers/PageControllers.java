@@ -63,6 +63,7 @@ public class PageControllers{
            user.setEnabled(true);
            user.setImageURL("default.png");
            user.setRole("ROLE_USER");
+           user.setImageURL("contact.png");
            user.setPassword(passwordEncoder.encode(user.getPassword()));
            User re=userRepository.save(user);
            model.addAttribute("user",new User());
